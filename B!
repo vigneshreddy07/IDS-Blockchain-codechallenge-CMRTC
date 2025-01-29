@@ -1,0 +1,32 @@
+class Token:
+    def __init__(self, name, token_id, treasury_balance, recipient_balance):
+        self.name = name
+        self.token_id = token_id
+        self.treasury_balance = treasury_balance
+        self.recipient_balance = recipient_balance
+
+    def transfer(self, amount):
+        """Simulate a transfer from the treasury to the recipient"""
+        if self.treasury_balance >= amount:
+            self.treasury_balance -= amount
+            self.recipient_balance += amount
+        else:
+            print("Insufficient balance in the treasury for the transfer.")
+
+    def display_balances(self):
+        """Display the current balances of the treasury and recipient."""
+        print(f"Token Created: {self.name} ({self.token_id})")
+        print(f"Treasury Balance: {self.treasury_balance}")
+        print(f"Recipient Balance: {self.recipient_balance}")
+
+# Simulating the creation of the fungible token with initial balances
+my_token = Token("MyToken", "0.0.56789", treasury_balance=950, recipient_balance=50)
+
+# Display initial state after creation
+my_token.display_balances()
+
+# Simulate a transfer if needed (not specified in your case)
+# my_token.transfer(100)  # Example transfer (uncomment to transfer 100 tokens)
+
+# Display updated balances (after transfer, if done)
+my_token.display_balances()
